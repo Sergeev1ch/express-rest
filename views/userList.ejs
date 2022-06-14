@@ -1,0 +1,28 @@
+<html>
+    <%- include("head.ejs") %>
+<body>
+    <%- include("nav.ejs") %>
+    <div class="pt-5 d-flex justify-content-center">
+        <% if(data!=null) { %>
+            <table class="table table-bordered w-50 mt-5">
+            <tr>
+                <th>LOGIN</th>
+                <th>PASSWORD</th>
+                <th>ROLE</th>
+                <th></th>
+            </tr>
+            <% data.forEach(function(item){ %>
+            <tr>
+                <td><%= item.login%></td>
+                <td><%= item.password%></td>
+                <td><%= item.role%></td>
+                <form action="/userList" method="post">
+                <td class="text-center"><input type="hidden" name="id" value="<%= item.id%>"><input type="submit" value="&#10006" ></input></td>
+                </form>
+            </tr>
+            <% }) %>
+            </table>
+            <% } %>
+    </div>
+</body>
+</html>

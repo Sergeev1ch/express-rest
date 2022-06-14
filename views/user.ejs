@@ -1,0 +1,38 @@
+<html>
+    <%- include("head.ejs") %>
+<body>
+    <%- include("nav.ejs") %>
+    <div class="pt-5">
+        <form action="/user" method="post" class="mt-4 d-flex align-items-center w-100">
+            <h5 class="m-0" style="padding-left: 1em">Login</h5><input style="margin-left:0.5em" type="text" name="login" pattern="[a-z]{3,10}">
+            <h5 class="m-0" style="padding-left: 1em">Role</h5><input style="margin-left:0.5em" type="text" name="role" pattern="Admin|User">
+            <button class="btn btn-primary" style="margin-left: 1em" type="submit">SEARCH</button>
+            <% if(message){ %>
+            <%= message %>
+            <% } %>
+        </form>
+    </div>
+    <% if(data!=null) { %>
+<div class="d-flex justify-content-center">
+<table class="table table-bordered w-50 mt-5">
+<tr>
+    <th>LOGIN</th>
+    <th>PASSWORD</th>
+    <th>RANK</th>
+    <th></th>
+</tr>
+<% data.forEach(function(item){ %>
+<tr>
+    <td><%= item.login%></td>
+    <td><%= item.password%></td>
+    <td><%= item.role%></td>
+    <form action="/userList" method="post">
+    <td><input type="hidden" name="id" value="<%= item.id%>"><input type="submit" value="&#10006" ></input></td>
+    </form>
+</tr>
+<% }) %>
+</table>
+<% } %>
+</div>
+</body>
+</html>

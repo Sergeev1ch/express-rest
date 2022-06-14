@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <%- include("head.ejs") %>
+<body>
+  <div class="container-fluid d-flex justify-content-center align-items-center" style="height: 100vh;">
+  <div class="card w-25">
+    <div class="card-header text-center">
+      <h3 class="m-0" style="font-weight: bold">AUTH</h3>
+    </div>
+    <div class="card-body">
+      <form action="/login" method="post" class="m-0">
+        <h5>Login</h5>
+        <input class="w-100" type="text" name="login" required pattern="[a-z]{3,10}">
+        <h5 class="mt-3">Password</h5>
+        <input class="w-100 mb-2" type="password" name="password" required pattern="[A-Za-z0-9]{4,15}">
+        <% if(message){ %>
+          <%= message %>
+          <% } %>
+    </div>
+      <div class="card-footer text-center">
+        <button class="w-100 btn btn-primary btn-lg" style="font-weight: bold" type="submit">LOG IN</button>
+      </div>
+      </form>
+  </div>
+  </div>
+</body>
+</html>
